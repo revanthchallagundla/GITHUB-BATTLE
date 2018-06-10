@@ -1,3 +1,3 @@
 # React
 Front end project
-# This Project is a GitHub Battle Game where friends can battle their repo stars
+# This is a "Github Battle App". Enter in two Github usernames, and it'll declare a winner.
