@@ -18,6 +18,7 @@ var config = {
   devServer: {
     historyApiFallback: true,
   },
+mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/index.html'

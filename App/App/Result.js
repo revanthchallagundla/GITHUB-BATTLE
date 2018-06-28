@@ -1,11 +1,11 @@
-var React = require('react');
-var queryString = require('query-string');
-var Api = require("../Utils/Api");
-var PlayerPreview = require('./PlayerPreview');
-var Loading = require("./Loading");
+import React from 'react';
+import queryString from 'query-string';
+import Api from "../Utils/Api";
+import PlayerPreview from './PlayerPreview';
+import Loading from "./Loading";
 
-function Profile(props){
-    var info = props.info;
+function Profile({info}){
+    var info = info;
 
     return(
         <PlayerPreview avatar={info.avatar_url} username={info.login} >
@@ -55,35 +55,27 @@ class Result extends React.Component{
       Api.battle([
           Player.PlayerOneName,
           Player.PlayerTwoName
-      ]).then(function(results){
+      ]).then((results)=>{
           if(results === null){
-           
-           return this.setState(function(result){ 
-                return{
+           return this.setState((result)=>({
                 error: "there is an error please check the details entered",
                 loading:false
-            }
-          })
+            }))
         }
 
-          this.setState(function(){
-                    return {
+          this.setState(()=>({
                         winner:results[0],
                         losser:results[1],
                         error:"",
                         loading:false
-                    }
+                }))
+      })}
 
-          })
-      }.bind(this))
-      
-  }
+
     render(){
       console.log(this.props)
-      var winner = this.state.winner;
-      var losser = this.state.losser;
-      var error = this.state.error;
-      var loading = this.state.loading;
+      const {winner,losser,error,loading} = this.state;
+
 
       if(loading === true){
           return <Loading/>
@@ -103,4 +95,4 @@ class Result extends React.Component{
 
 }
 
-module.exports = Result;
+export default Result;

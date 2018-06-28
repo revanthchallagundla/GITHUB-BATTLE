@@ -1,6 +1,5 @@
-var React = require("react");
-var PropTypes = require("prop-types");
-
+import React from "react";
+import PropTypes from "prop-types";
 
 var style = {
     content: {
@@ -20,23 +19,12 @@ constructor(props){
 componentDidMount(){
     var stopper = this.state.text + "...";
 
-    this.interval =setInterval(function(){
+    this.interval =setInterval(()=>{
     if(stopper == this.state.text){
-        this.setState(function(){
-        return {
-            text:this.props.text
-            }
-        })
+        this.setState(()=>({text:this.props.text}))
     }else{
-       this.setState(function(prevState){
-        return {
-            text:prevState.text + '.'
-        }
-
-       })
-
-        }
-    }.bind(this),300);
+       this.setState((prevState)=>({text:prevState.text + '.'}))}
+    },300);
 }
 
 componentWillUnmount(){
@@ -61,4 +49,4 @@ Loading.propTypes={
 Loading.defaultProps ={
    text:'Loading' 
 }
-module.exports = Loading;
+export default Loading;

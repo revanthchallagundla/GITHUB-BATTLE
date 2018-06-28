@@ -1,5 +1,5 @@
-var React = require("react");
-var Link = require("react-router-dom").Link;
+import React from "react";
+import {Link} from "react-router-dom";
 
 function Home(){
     return(
@@ -10,4 +10,4 @@ function Home(){
     )
 }
 
-module.exports = Home;
+export default Home;
